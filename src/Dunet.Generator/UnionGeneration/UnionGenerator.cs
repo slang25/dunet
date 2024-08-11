@@ -53,6 +53,14 @@ public sealed class UnionGenerator : IIncrementalGenerator
             return;
         }
 
+#if DUNET_EMBED_ATTRIBUTES
+        var unionAttributeSource = UnionAttributeSourceBuilder.Build();
+        context.AddSource(
+            "Dunet.UnionAttribute.g.cs",
+            SourceText.From(unionAttributeSource, Encoding.UTF8)
+        );
+#endif
+
         if (unionRecord.SupportsExtensionMethods())
         {
             var matchExtensions = UnionExtensionsSourceBuilder.GenerateExtensions(unionRecord);

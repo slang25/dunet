@@ -9,6 +9,7 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <RootNamespace>Dunet.Generator</RootNamespace>
         <IsRoslynComponent>true</IsRoslynComponent>
+        <DefineConstants>$(DefineConstants);DUNET_EMBED_ATTRIBUTES</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>

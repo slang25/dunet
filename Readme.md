@@ -472,3 +472,27 @@ When upgrading to dunet v1.11.0, this will need to be simplified to:
 
 Otherwise the assembly will not be included for compilation, leading to build failures when trying to reference
  the `Dunet` namespace or the `UnionAttribute` class.
+
+## Enabling Embedded Attributes
+
+To enable embedded attributes, follow these steps:
+
+1. Define the `DUNET_EMBED_ATTRIBUTES` constant in your project file.
+2. Include the package reference for `Dunet` with `ExcludeAssets` set to `compile;runtime`.
+
+Here is an example of how to define the constant and include the package reference in your project file:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <!-- Define this constant so the embedded attributes are activated -->
+    <DefineConstants>DUNET_EMBED_ATTRIBUTES</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dunet" Version="1.0.0" ExcludeAssets="compile;runtime" PrivateAssets="all" />
+  </ItemGroup>
+</Project>
+```
+
+If you enable this option, you might initially encounter duplicate type problems due to the "internal" types embedded by the source generator and the public types in the attribute DLL. To resolve this, you can add `compile` to the `ExcludeAssets` for the package.
