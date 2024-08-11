@@ -485,7 +485,7 @@ Here is an example of how to define the constant and include the package referen
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <!-- Define this constant so the embedded attributes are activated -->
     <DefineConstants>DUNET_EMBED_ATTRIBUTES</DefineConstants>
   </PropertyGroup>
